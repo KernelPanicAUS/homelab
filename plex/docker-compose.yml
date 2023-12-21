@@ -1,0 +1,43 @@
+version: "3.2"
+services:
+  plex:
+    image: linuxserver/plex:latest
+    container_name: plex
+    ports:
+      - "32400:32400/tcp"
+      - "3005:3005/tcp"
+      - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
+    volumes:
+      - plex-config:/config/Library/Application\ Support/Plex\ Media\ Server/
+      - tv:/tv
+      - movies:/movies
+    devices:
+      - /dev/dri:/dev/dri  # If your Raspberry Pi supports hardware transcoding
+    network_mode: host
+    restart: unless-stopped
+
+volumes:
+  plex-config:
+    driver_opts:
+      type: "nfs"
+      o: "addr=192.168.1.20,nolock,soft,rw,nfsvers=4"
+      device: ":/plex"
+
+  tv:
+    driver_opts:
+      type: "nfs"
+      o: "addr=192.168.1.20,nolock,soft,rw,nfsvers=4"
+      device: ":/TV"
+
+  movies:
+    driver_opts:
+      type: "nfs"
+      o: "addr=192.168.1.20,nolock,soft,rw,nfsvers=4"
+      device: ":/films"
+
