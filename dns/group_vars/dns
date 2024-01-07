@@ -1,0 +1,65 @@
+adguardhome_daemon: AdGuardHome
+adguardhome_config_dir: /usr/local/bin/
+adguardhome_version: 0.107.43
+adguardhome_webhost: 0.0.0.0
+adguardhome_dnshosts:
+  - 0.0.0.0
+adguardhome_users:
+  - username: "{{lookup('community.general.onepassword', 'AdGuardHome Admin', field='username', vault='homelab')}}"
+    hashed_password: "{{lookup('community.general.onepassword', 'AdGuardHome Admin', field='credential', vault='homelab')}}"
+adguardhome_upstream_dns:
+  - https://dns10.quad9.net/dns-query
+  - https://doh.opendns.com/dns-query
+  - https://dns.google/dns-query
+  - https://dns.quad9.net/dns-query
+  - tls://dns.quad9.net
+  - tls://dns.nextdns.io
+  - https://dns.nextdns.io
+adguardhome_filters:
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt
+    name: AdGuard DNS filter
+  - enabled: false
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt
+    name: AdAway Default Blocklist
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_51.txt
+    name: HaGeZi's Pro++ Blocklist
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_34.txt
+    name: HaGeZi Multi NORMAL
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_4.txt
+    name: Dan Pollock's List
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt
+    name: HaGeZi's Pro Blocklist
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_49.txt
+    name: HaGeZi's Ultimate Blocklist
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_23.txt
+    name: WindowsSpyBlocker - Hosts spy rules
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_7.txt
+    name: Perflyst and Dandelion Sprout's Smart-TV Blocklist
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_30.txt
+    name: Phishing URL Blocklist (PhishTank and OpenPhish)
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_31.txt
+    name: Stalkerware Indicators List
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt
+    name: The Big List of Hacked Malware Web Sites
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_50.txt
+    name: uBlock₀ filters – Badware risks
+    id: 1703157641
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt
+    name: Malicious URL Blocklist (URLHaus)
+    id: 1703157642
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_8.txt
+    name: NoCoin Filter List

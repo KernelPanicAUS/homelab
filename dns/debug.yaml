@@ -1,0 +1,20 @@
+---
+- name: Playbook to Print Facts
+  hosts: dns
+  tasks:
+    - name: Determine the system architecture
+      set_fact:
+        architecture: "{{ ansible_architecture }}"
+        ansible_system: "{{ ansible_system | lower}}"
+
+    - name: Print host_architecture
+      ansible.builtin.debug:
+        msg: "User {{ ansible_architecture }} os {{ansible_system}}"
+
+    - name: Architecture overrides
+      set_fact:
+        architectures:
+          aarch64: arm64
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: "https://github.com/AdguardTeam/AdGuardHome/releases/download/v100/AdGuardHome_{{ansible_system}}_{{ architectures[ansible_architecture] | default(ansible_architecture)}}.tar.gz"

@@ -1,0 +1,11 @@
+- hosts: dns
+  roles:
+    - role: ansible-role-adguardhome
+      tags: adguardhome
+      become: true
+      become_method: sudo
+    - role: ansible-role-tailscale
+      tags: tailscale
+      become: true
+      tailscale_authkey: "{{lookup('community.general.onepassword', 'tailscale-key', field='credential', vault='homelab')}}"
+      tailscale_args: "--ssh"

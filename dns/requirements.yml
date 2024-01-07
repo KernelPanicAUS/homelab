@@ -1,0 +1,9 @@
+- name: ansible-role-adguardhome
+  src: https://github.com/KernelPanicAUS/ansible-role-adguardhome.git
+  version: feat/add-support-for-arm64
+  scm: git
+- name: ansible-role-tailscale
+  src: https://github.com/artis3n/ansible-role-tailscale.git
+  version: v4.4.0
+  scm: git
+   
