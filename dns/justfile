@@ -2,19 +2,19 @@ download-roles:
      ansible-galaxy role install -r requirements.yml -p roles
 
 run: download-roles
-    ansible-playbook --inventory inventory.yml dns.yaml
+    ansible-playbook --inventory inventory.yml dns.yml
 
 check: download-roles
-    ansible-playbook --inventory inventory.yml dns.yaml --check
+    ansible-playbook --inventory inventory.yml dns.yml --check
 
 run-verbose:
-    ansible-playbook --inventory inventory.yml dns.yaml --verbose
+    ansible-playbook --inventory inventory.yml dns.yml --verbose
 
 runsolo target:
-    ansible-playbook --inventory inventory.yml dns.yaml --tags "{{target}}"
+    ansible-playbook --inventory inventory.yml dns.yml --tags "{{target}}"
 
 test:
-    ansible-playbook --inventory inventory.yml debug.yaml --verbose
+    ansible-playbook --inventory inventory.yml debug.yml --verbose
 
 debug:
      ansible dns -i inventory.yml -m ansible.builtin.setup --tree ./facts
